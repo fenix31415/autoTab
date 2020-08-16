@@ -22,10 +22,8 @@ import net.minecraft.world.GameMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static net.minecraft.client.gui.DrawableHelper.fill;
-
 @Environment(EnvType.CLIENT)
-public class SpecHUD {
+public class SpecHUD extends DrawableHelper {
     private MinecraftClient client;
     private boolean isAdminsHere = false;
 
@@ -77,7 +75,7 @@ public class SpecHUD {
             ++o;
         }
         boolean bl = this.client.isInSingleplayer() || this.client.getNetworkHandler().getConnection().isEncrypted();
-        int s = Math.min(o * ((bl ? 9 : 0) + maxLength + 13), i - 50) / o;
+        int s = Math.min(o * ((bl ? 9 : 0) + maxLength), i - 50) / o;
         int t = i / 2 - (s * o + (o - 1) * 5) / 2;
         int u = 10;
         int v = s * o + (o - 1) * 5;
